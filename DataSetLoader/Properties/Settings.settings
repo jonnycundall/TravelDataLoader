@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataSetLoader.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="NaPTANFileLocation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\git\BusRoutes\NapTAN</Value>
+    </Setting>
+    <Setting Name="TravelineFileLocation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\git\BusRoutes\traveline data</Value>
+    </Setting>
+    <Setting Name="postgresConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)" />
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
