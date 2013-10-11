@@ -39,7 +39,9 @@ _ReSharper*/
 
 #packages
 Packages
-!Packages/repositories.config
+Packages/repositories.config
+BusRoutesWeb/Packages
+!BusRoutesWeb/Packages/repositories.config
 
 #exclude contents of xml data dirs
 Naptan/
