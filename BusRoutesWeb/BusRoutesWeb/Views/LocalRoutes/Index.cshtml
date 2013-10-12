@@ -15,16 +15,17 @@
     @Html.Label("Enter Postcode");
     @Html.EditorFor(x => x.Postcode,new { id = "postcode" })
     <input type="submit" value="OK" id="find"/>
+    <ul id="errors"></ul>
 }
 <br />
-<input type="text" id="Longitude" />
-<input type="text" id="Latitude" />
 <div id="map" class="hidden">
     <p>map visible</p>
 </div>
-<div id="mapdiv"></div>
+<div id="mapdiv" class="map"></div>
 <script src="../../Scripts/jquery-1.7.1.min.js"></script>
-<script src="../Scripts/mapWrangling.js" type="text/javascript"></script>
 <script src ="../OpenLayers-2.10/OpenLayers.js" type="text/javascript"></script>
-
-  
+<script src="../../Scripts/busRoutes/Interfaces.js"></script>
+<script src="../../Scripts/busRoutes/GeoProvider.js"></script>
+<script src="../../Scripts/busRoutes/googleGeoDataProcessor.js"></script>
+<script src="../../Scripts/busRoutes/openLayersMapDrawer.js"></script>
+<script src="../../Scripts/busRoutes/mapWrangling.js" type="text/javascript"></script>
