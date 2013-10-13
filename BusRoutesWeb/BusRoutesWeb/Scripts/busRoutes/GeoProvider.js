@@ -4,7 +4,10 @@
     this.getGeoData = function (location, callback, failureCallback) {
             var uri = googleApisUri.replace('{postcode}', location);
 
-            $.post(uri, callback);
+            $.ajax(uri)
+                .done(callback)
+                .fail(failureCallback);
+
             return false;
         };
 

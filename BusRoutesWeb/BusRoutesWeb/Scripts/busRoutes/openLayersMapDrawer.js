@@ -2,7 +2,7 @@
     this.prototype = Object.create(interfaces.MapDrawer);
 
     this.drawMap = function (lng, lat) {
-        $('mapdiv').html("");
+        $('#mapdiv').empty();
         map = new OpenLayers.Map("mapdiv");
         var mapLayer = new OpenLayers.Layer.OSM();
         var fromProjection = new OpenLayers.Projection("EPSG:4326");

@@ -7,8 +7,14 @@
         mapDrawer = new openLayersMapDrawer(),
 
     drawCentredMap = function (data) {
-        var lonlat = geoDataProcessor.processGeoData(data);
-        mapDrawer.drawMap(lonlat.lng, lonlat.lat);
+        var mapData = geoDataProcessor.processGeoData(data);
+
+        if (mapData.status != 'OK') {
+            logError("there was an error:" + mapData.status);
+            return;
+        }
+        clearErrors();
+        mapDrawer.drawMap(mapData.lng, mapData.lat);
     },
 
     logError = function (message) {
@@ -22,18 +28,12 @@
     $('#findForm').submit(function (e) {
         'use strict';
         var logGeoDataError = function () {
-            alert('bar');
             logError('unable to contact google geocoding api')
-        },
-        useGeoData = function (data) {
-            //con('foo');
-            drawCentredMap(data);
         };
 
         clearErrors();
         
-        //$.post('http://maps.googleapis.com/maps/api/geocode/json?address=BS34LL&sensor=false', useGeoData);
-        geoProvider.getGeoData($('#Postcode').val(), useGeoData, logGeoDataError);
+        geoProvider.getGeoData($('#Postcode').val(), drawCentredMap, logGeoDataError);
         return false;
     });
 };
