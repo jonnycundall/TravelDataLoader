@@ -25,7 +25,7 @@ namespace DataSetLoader
                 .Union(new[]{lastStop})
                 .Where(s => s.code != "NOTFOUND");
 
-            if (!stopsInSequence.Any())
+            if (!stopsInSequence.Skip(1).Any()) //linestring requires at least 2 stops
             {
                 _repository.LogError("NOSTOPS",rawRoute.RouteName);
                 return;

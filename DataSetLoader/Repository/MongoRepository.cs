@@ -5,6 +5,7 @@ using System.Text;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Driver.Builders;
+using MongoDB.Driver.GeoJsonObjectModel;
 
 namespace DataSetLoader.Repository
 {
@@ -27,13 +28,16 @@ namespace DataSetLoader.Repository
 
         public void SaveRoute(RawRoute route, IEnumerable<StopPoint> stops, GeoBounds bounds)
         {
+            var coords = stops.Select(s => 
+                    new GeoJson2DGeographicCoordinates(s.longitude, s.latitude));
+
+            var line = new GeoJsonLineString<GeoJson2DGeographicCoordinates>(
+                new GeoJsonLineStringCoordinates<GeoJson2DGeographicCoordinates>(coords));
+
             BsonDocument bsonRoute = new BsonDocument
             {
                 {"RouteName", route.RouteName},
-                {"stops" , new BsonArray(stops.Select(s => 
-                    new BsonDocument{
-                    {"Longitude", s.longitude},
-                    {"Latitude", s.latitude}}))
+                {"stops" , line.ToBsonDocument()
                 },
                 {"maxLongitude",bounds.TopLeft.Longitude},
                 {"minLongitude",bounds.BottomRight.Longitude},
